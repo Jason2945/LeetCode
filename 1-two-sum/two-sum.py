@@ -1,12 +1,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        answer = []
-        num_index = 0
-        for num in nums:
-            second_num_index = 0
-            for second_num in nums:
-                if num + second_num == target:
-                    if num_index != second_num_index:
-                        return(num_index, second_num_index)
-                second_num_index += 1
-            num_index += 1
+        # Go through the array for the first number
+        for index in range(len(nums)):
+            # Go through the array for the second number
+            for secondIndex in range(len(nums)):
+                # Make sure the index of the first and second number are not the same
+                if (index == secondIndex):
+                    continue
+                # If they equal the target, then return the indexes
+                if (nums[index] + nums[secondIndex] == target):
+                    return index, secondIndex
