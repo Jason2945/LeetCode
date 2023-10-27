@@ -1,8 +1,9 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         longestCommonPre = ""
-        for index in range(len(min(strs, key=len))):
-            letter = strs[0][index]
+        shortestWord = min(strs, key=len)
+        for index in range(len(shortestWord)):
+            letter = shortestWord[index]
             for words in strs:
                 if words[index] != letter:
                     return longestCommonPre
