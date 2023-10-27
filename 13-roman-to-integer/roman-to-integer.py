@@ -1,14 +1,19 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        roman_sub = {"IV" : 4, "IX" : 9, "XL" : 40, "XC" : 90, "CD" : 400, "CM" : 900}
-        roman_num = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
-        Number = 0
-        # Do subtraction and leave s with none subtraction
-        for key in roman_sub:
-            if key in s:
-                s = s.replace(key, '')
-                Number += roman_sub[key]
-        # Add in the other romans into number
-        for letter in s:
-            Number += roman_num[letter]
-        return Number
+        # Make dictionary for values to be subtracted
+        romanSubtraction = {"IV" : 4, "IX" : 9, "XL" : 40, "XC" : 90, "CD" : 400, "CM" : 900 }
+        # Make dictionary for values of the roman numeral
+        romanNumeral = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, "D" : 500, "M" : 1000}
+        # Initialize and declare a variable for the sum of the roman numerals
+        romanSum = 0
+        # Find if the roman numeral has the subtraction letters
+        for subtraction in romanSubtraction.keys():
+            if (subtraction in s):
+                s = s.replace(subtraction, "")
+                romanSum += romanSubtraction[subtraction]
+        # After subtraction, add the rest of the roman numerals to romanSum
+        for letters in s:
+            romanSum += romanNumeral[letters]
+        return(romanSum)
+
+        
