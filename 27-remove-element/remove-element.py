@@ -1,13 +1,11 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        # Check the numbers and see how many does not equal val
-        checkNum = 0
-        # Run through the whole list starting from index 0
-        for index in range(0, len(nums)):
-            # If the element at that index does not equal the value, then bring that element toward the front of nums
-            # Then increment checkNums by 1
+        indexPlaceholder = 0
+        # Run through all the values
+        for index in range(len(nums)):
+            # Make sure the number does not equal to the val and move it to the front
             if nums[index] != val:
-                nums[checkNum] = nums[index]
-                checkNum += 1
-        return checkNum
+                nums[indexPlaceholder] = nums[index]
+                indexPlaceholder += 1
+        return indexPlaceholder
         
