@@ -1,17 +1,24 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        completed_bracket = ["[]", "{}", "()"]
-        s_changed = True
-        while s_changed:
-            for bracks in completed_bracket:
-                if bracks in s:
-                    s = s.replace(bracks, "")
-                    s_changed = True
-                    break
-                else :
-                    s_changed = False
-        if s == "":
+        openBrackets = ""
+        closing = ['}', ']', ')']
+        for chars in s:
+            if chars in closing:
+                if len(openBrackets) < 1:
+                    return False
+            if (chars == '{' or chars == '[' or chars == '('):
+                openBrackets += chars
+            elif (chars == "}" and openBrackets[-1] != "{"):
+                return False
+            elif (chars == "]" and openBrackets[-1] != "["):
+                return False
+            elif (chars == ")" and openBrackets[-1] != "("):
+                return False
+            else :
+                openBrackets = openBrackets[:-1]
+        if openBrackets == "":
             return True
         else :
-             False
+            return False
+
         
